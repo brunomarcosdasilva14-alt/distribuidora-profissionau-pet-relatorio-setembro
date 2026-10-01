@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Relatório Flux — Profissionau Pet</title>
+<style>
+:root {
+  --purple:#7c3aed; --purple2:#a855f7; --bg:#f6f7fb; --text:#171725;
+  --muted:#73758a; --border:#e8e8f0; --white:#fff; --dark:#17151f;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}
+.layout{display:flex;min-height:100vh}
+.sidebar{width:250px;background:var(--dark);color:#fff;padding:28px 18px;position:fixed;left:0;top:0;bottom:0}
+.brand{font-size:27px;font-weight:800;letter-spacing:-1px;margin:0 14px 36px}
+.brand span{color:#a855f7}
+.client-mini{background:#24212e;border:1px solid #363141;border-radius:14px;padding:14px;margin:0 6px 28px}
+.client-mini small{display:block;color:#aaa6b8;font-size:11px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+.client-mini strong{font-size:14px;line-height:1.35;display:block}
+.nav a{display:block;color:#aaa7b5;text-decoration:none;padding:12px 14px;border-radius:10px;margin:4px 0;font-size:14px}
+.nav a.active{background:#302543;color:#fff;font-weight:700}
+.nav a.active:before{content:"";display:inline-block;width:4px;height:18px;background:var(--purple2);border-radius:4px;margin-right:10px;vertical-align:middle}
+.main{margin-left:250px;width:calc(100% - 250px);padding:34px 42px 60px}
+.top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:30px}
+.eyebrow{color:var(--purple);font-weight:800;text-transform:uppercase;font-size:12px;letter-spacing:.09em}
+h1{font-size:30px;margin:7px 0 5px;letter-spacing:-.8px}
+.subtitle{color:var(--muted);font-size:14px}
+.badge{background:#efe8ff;color:#6d28d9;padding:9px 13px;border-radius:999px;font-size:12px;font-weight:800}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:20px}
+.card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:20px;box-shadow:0 3px 12px rgba(28,22,55,.03)}
+.kpi-label{color:var(--muted);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.kpi-value{font-size:25px;font-weight:800;margin-top:9px;letter-spacing:-.5px}
+.kpi-note{font-size:12px;color:var(--muted);margin-top:6px}
+.section{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;margin-bottom:20px}
+.card h2{font-size:17px;margin:0 0 18px}
+.funnel{display:flex;flex-direction:column;gap:12px}
+.step{display:flex;align-items:center;gap:12px}
+.step-label{width:125px;font-size:13px;font-weight:700}
+.bar-wrap{flex:1;background:#f0eef6;height:30px;border-radius:8px;overflow:hidden}
+.bar{height:100%;background:linear-gradient(90deg,var(--purple),var(--purple2));border-radius:8px}
+.step-value{width:90px;text-align:right;font-weight:800;font-size:13px}
+.metrics{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.metric{background:#faf9fd;border:1px solid var(--border);padding:15px;border-radius:12px}
+.metric strong{font-size:19px;display:block;margin-top:5px}
+.chart{height:230px;display:flex;align-items:end;gap:18px;padding:15px 5px 0}
+.col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:end;height:100%;gap:8px}
+.col-bar{width:100%;max-width:70px;background:linear-gradient(180deg,var(--purple2),var(--purple));border-radius:10px 10px 4px 4px;min-height:10px}
+.col span{font-size:11px;color:var(--muted);text-align:center}
+.insight{border-left:4px solid var(--purple);background:#faf8ff;padding:17px 18px;border-radius:10px;color:#454356;line-height:1.6;font-size:14px}
+.footer{margin-top:30px;text-align:center;color:#9695a3;font-size:11px}
+@media(max-width:1000px){
+.grid{grid-template-columns:repeat(2,1fr)} .section{grid-template-columns:1fr}
+}
+@media(max-width:700px){
+.sidebar{position:static;width:100%;min-height:auto} .layout{display:block}
+.main{margin-left:0;width:100%;padding:24px 16px}
+.grid{grid-template-columns:1fr} .top{display:block} .badge{display:inline-block;margin-top:15px}
+}
+</style>
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="brand">FLUX<span>.</span></div>
+    <div class="client-mini">
+      <small>Cliente</small>
+      <strong>Distribuidora Profissionau Pet</strong>
+    </div>
+    <nav class="nav">
+      <a class="active" href="#visao">Visão geral</a>
+      <a href="#meta">Meta Ads</a>
+      <a href="#google">Google Ads</a>
+      <a href="#funil">Funil</a>
+      <a href="#resultados">Resultados</a>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <header class="top" id="visao">
+      <div>
+        <div class="eyebrow">Relatório de performance</div>
+        <h1>Distribuidora Profissionau Pet</h1>
+        <div class="subtitle">Período analisado: 01/09 - 30/09 • Meta Ads</div>
+      </div>
+      <div class="badge">FLUX PERFORMANCE</div>
+    </header>
+
+    <section class="grid">
+      <div class="card">
+        <div class="kpi-label">Investimento</div>
+        <div class="kpi-value">R$ 615,06</div>
+        <div class="kpi-note">Verba investida no período</div>
+      </div>
+      <div class="card">
+        <div class="kpi-label">Alcance</div>
+        <div class="kpi-value">16.489</div>
+        <div class="kpi-note">Pessoas alcançadas</div>
+      </div>
+      <div class="card">
+        <div class="kpi-label">Conversas / Leads</div>
+        <div class="kpi-value">72</div>
+        <div class="kpi-note">Custo por lead: R$ 8,54</div>
+      </div>
+      <div class="card">
+        <div class="kpi-label">CPC</div>
+        <div class="kpi-value">R$ 0,96</div>
+        <div class="kpi-note">Custo médio por clique</div>
+      </div>
+    </section>
+
+    <section class="section" id="meta">
+      <div class="card">
+        <h2>Principais indicadores</h2>
+        <div class="metrics">
+          <div class="metric"><span class="kpi-label">Impressões</span><strong>34.888</strong></div>
+          <div class="metric"><span class="kpi-label">Frequência</span><strong>2.12</strong></div>
+          <div class="metric"><span class="kpi-label">Cliques</span><strong>644</strong></div>
+          <div class="metric"><span class="kpi-label">Cliques no link</span><strong>127</strong></div>
+          <div class="metric"><span class="kpi-label">CTR</span><strong>1,85%</strong></div>
+          <div class="metric"><span class="kpi-label">CPM</span><strong>R$ 17,63</strong></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Eficiência de conversão</h2>
+        <div class="metrics">
+          <div class="metric"><span class="kpi-label">Cliques → Leads</span><strong>11,18%</strong></div>
+          <div class="metric"><span class="kpi-label">Link → Leads</span><strong>56,69%</strong></div>
+          <div class="metric"><span class="kpi-label">Leads / R$100</span><strong>11.71</strong></div>
+          <div class="metric"><span class="kpi-label">Custo / 1.000 pessoas</span><strong>R$ 37,30</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="funil">
+      <div class="card">
+        <h2>Funil de mídia</h2>
+        <div class="funnel">
+          <div class="step">
+            <div class="step-label">Impressões</div>
+            <div class="bar-wrap"><div class="bar" style="width:100%"></div></div>
+            <div class="step-value">34.888</div>
+          </div>
+          <div class="step">
+            <div class="step-label">Alcance</div>
+            <div class="bar-wrap"><div class="bar" style="width:47.3%"></div></div>
+            <div class="step-value">16.489</div>
+          </div>
+          <div class="step">
+            <div class="step-label">Cliques</div>
+            <div class="bar-wrap"><div class="bar" style="width:1.8%"></div></div>
+            <div class="step-value">644</div>
+          </div>
+          <div class="step">
+            <div class="step-label">Link</div>
+            <div class="bar-wrap"><div class="bar" style="width:0.4%"></div></div>
+            <div class="step-value">127</div>
+          </div>
+          <div class="step">
+            <div class="step-label">Leads</div>
+            <div class="bar-wrap"><div class="bar" style="width:0.2%"></div></div>
+            <div class="step-value">72</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" id="resultados">
+        <h2>Resumo da operação</h2>
+        <div class="insight">
+          No período analisado, a campanha investiu <strong>R$ 615,06</strong> e gerou
+          <strong>72 conversas/leads</strong>, com custo médio de
+          <strong>R$ 8,54</strong> por lead. Foram alcançadas <strong>16.489</strong>
+          pessoas e registradas <strong>644</strong> interações em anúncios.
+          A frequência média foi de <strong>2.12</strong>, indicando quantas vezes, em média,
+          cada pessoa alcançada foi exposta aos anúncios.
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="google">
+      <h2>Distribuição dos principais indicadores</h2>
+      <div class="chart">
+        <div class="col"><div class="col-bar" style="height:100%"></div><span>Impressões<br>34.888</span></div>
+        <div class="col"><div class="col-bar" style="height:47.3%"></div><span>Alcance<br>16.489</span></div>
+        <div class="col"><div class="col-bar" style="height:1.8%"></div><span>Cliques<br>644</span></div>
+        <div class="col"><div class="col-bar" style="height:0.4%"></div><span>Link<br>127</span></div>
+        <div class="col"><div class="col-bar" style="height:0.2%"></div><span>Leads<br>72</span></div>
+      </div>
+    </section>
+
+    <div class="footer">Relatório desenvolvido pela Flux • Performance & Tráfego Pago</div>
+  </main>
+</div>
+</body>
+</html>
